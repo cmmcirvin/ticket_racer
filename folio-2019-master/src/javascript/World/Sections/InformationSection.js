@@ -166,6 +166,12 @@ export default class InformationSection
                 action: 'ticket',
                 labelTexture: this.resources.items.informationContactGithubLabelTexture,
                 cb: () => {
+                    async function tryRequests() {
+                        const response = await fetch("http://localhost:3000/fetch-data");
+                        console.log(response);
+                    }
+                    
+                    tryRequests();
 
                     let lemonOption = {
                         base: this.resources.items.eggBase.scene,
