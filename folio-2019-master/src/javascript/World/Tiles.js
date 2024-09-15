@@ -122,14 +122,14 @@ export default class Tiles
             rotation += model.rotationIndex / 4 * Math.PI * 2
 
             // Tile
-            this.objects.add({
-                base: model.base,
-                collision: model.collision,
-                offset: new THREE.Vector3(position.x, position.y, 0),
-                rotation: new THREE.Euler(0, 0, rotation),
-                duplicated: true,
-                mass: 0
-            })
+            // this.objects.add({
+            //     base: model.base,
+            //     collision: model.collision,
+            //     offset: new THREE.Vector3(position.x, position.y, 0),
+            //     rotation: new THREE.Euler(0, 0, rotation),
+            //     duplicated: true,
+            //     mass: 0
+            // })
         }
     }
 }

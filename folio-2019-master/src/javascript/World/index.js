@@ -477,8 +477,8 @@ export default class World
         // Information
         this.sections.information = new InformationSection({
             ...options,
-            x: 1.2,
-            y: - 55
+            x: -5,
+            y: -10
             // x: 0,
             // y: - 10
         })

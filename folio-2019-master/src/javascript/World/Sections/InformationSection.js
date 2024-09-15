@@ -18,22 +18,22 @@ export default class InformationSection
         this.container = new THREE.Object3D()
         this.container.matrixAutoUpdate = false
 
-        this.setStatic()
-        this.setBaguettes()
+        // this.setStatic()
+        // this.setBaguettes()
         this.setLinks()
-        this.setActivities()
-        this.setTiles()
+        // this.setActivities()
+        // this.setTiles()
     }
 
     setStatic()
     {
-        this.objects.add({
-            base: this.resources.items.informationStaticBase.scene,
-            collision: this.resources.items.informationStaticCollision.scene,
-            floorShadowTexture: this.resources.items.informationStaticFloorShadowTexture,
-            offset: new THREE.Vector3(this.x, this.y, 0),
-            mass: 0
-        })
+        // this.objects.add({
+        //     base: this.resources.items.informationStaticBase.scene,
+        //     collision: this.resources.items.informationStaticCollision.scene,
+        //     floorShadowTexture: this.resources.items.informationStaticFloorShadowTexture,
+        //     offset: new THREE.Vector3(this.x, this.y, 0),
+        //     mass: 0
+        // })
     }
 
     setBaguettes()
@@ -71,12 +71,12 @@ export default class InformationSection
     {
         // Set up
         this.links = {}
-        this.links.x = 1.95
-        this.links.y = - 1.5
+        this.links.x = 0
+        this.links.y = 0
         this.links.halfExtents = {}
         this.links.halfExtents.x = 1
         this.links.halfExtents.y = 1
-        this.links.distanceBetween = 2.4
+        this.links.distanceBetween = 5
         this.links.labelWidth = this.links.halfExtents.x * 2 + 1
         this.links.labelGeometry = new THREE.PlaneGeometry(this.links.labelWidth, this.links.labelWidth * 0.25, 1, 1)
         this.links.labelOffset = - 1.6
@@ -89,20 +89,16 @@ export default class InformationSection
         // Options
         this.links.options = [
             {
-                href: 'https://twitter.com/bruno_simon/',
-                labelTexture: this.resources.items.informationContactTwitterLabelTexture
-            },
-            {
-                href: 'https://github.com/brunosimon/',
+                action: 'lemon',
                 labelTexture: this.resources.items.informationContactGithubLabelTexture
             },
             {
-                href: 'https://www.linkedin.com/in/simonbruno77/',
-                labelTexture: this.resources.items.informationContactLinkedinLabelTexture
+                action: 'ball',
+                labelTexture: this.resources.items.informationContactGithubLabelTexture
             },
             {
-                href: 'mailto:simon.bruno.77@gmail.com',
-                labelTexture: this.resources.items.informationContactMailLabelTexture
+                action: 'ticket',
+                labelTexture: this.resources.items.informationContactGithubLabelTexture
             }
         ]
 
@@ -123,7 +119,9 @@ export default class InformationSection
             })
             item.area.on('interact', () =>
             {
-                window.open(_option.href, '_blank')
+                // window.open(_option.href, '_blank')
+                console.log("CLICKED")
+                alert(_option.action)
             })
 
             // Texture
