@@ -1,3 +1,4 @@
 **Ticket Racer**
-Collect as many tickets as you can!
+
+Drive around and collect as many tickets as you can!
 
