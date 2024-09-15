@@ -11,6 +11,7 @@ export default class Walls
 
     add(_options)
     {
+        return;
         const wall = {}
         wall.coordinates = []
         wall.items = []

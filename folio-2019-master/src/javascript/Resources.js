@@ -220,8 +220,8 @@ export default class Resources extends EventEmitter
             { name: 'wig4', source: './models/wigs/wig4.glb' },
 
             // // Egg
-            // { name: 'eggBase', source: './models/egg/base.glb' },
-            // { name: 'eggCollision', source: './models/egg/collision.glb' },
+            { name: 'eggBase', source: './models/egg/base.glb' },
+            { name: 'eggCollision', source: './models/egg/collision.glb' },
         ])
 
         this.loader.on('fileEnd', (_resource, _data) =>

@@ -8,6 +8,7 @@ export default class InformationSection
         this.time = _options.time
         this.resources = _options.resources
         this.objects = _options.objects
+        this.car = _options.car
         this.areas = _options.areas
         this.tiles = _options.tiles
         this.debug = _options.debug
@@ -90,15 +91,110 @@ export default class InformationSection
         this.links.options = [
             {
                 action: 'lemon',
-                labelTexture: this.resources.items.informationContactGithubLabelTexture
+                labelTexture: this.resources.items.informationContactGithubLabelTexture,
+                cb: () => {
+                    let lemonOption = {
+                        base: this.resources.items.lemonBase.scene,
+                        collision: this.resources.items.lemonCollision.scene,
+                        offset: new THREE.Vector3(0, 0, 0),
+                        rotation: new THREE.Euler(Math.PI * 0.5, - Math.PI * 0.3, 0),
+                        duplicated: true,
+                        shadow: { sizeX: 1.2, sizeY: 1.8, offsetZ: - 0.15, alpha: 0.35 },
+                        mass: 0.5,
+                        sleep: true,
+                        soundName: 'woodHit'
+                    }
+
+                    for(let i = 0; i < 10; i++)
+                    {
+                        window.setTimeout(() =>
+                        {
+                            const x = this.car.chassis.object.position.x + (Math.random() - 0.5) * 10
+                            const y = this.car.chassis.object.position.y + (Math.random() - 0.5) * 10
+    
+                            this.objects.add({
+                                ...lemonOption,
+                                offset: new THREE.Vector3(x, y, 10),
+                                rotation: new THREE.Euler(Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2),
+                                sleep: false
+                            })
+                        }, i * 50)
+                    }
+                }
             },
             {
                 action: 'ball',
-                labelTexture: this.resources.items.informationContactGithubLabelTexture
+                labelTexture: this.resources.items.informationContactGithubLabelTexture,
+                cb: () => {
+                    let bowlingBall = {
+                        base: this.resources.items.bowlingBallBase.scene,
+                        collision: this.resources.items.lemonCollision.scene,
+                        offset: new THREE.Vector3(0, 0, 0),
+                        rotation: new THREE.Euler(Math.PI * 0.5, - Math.PI * 0.3, 0),
+                        duplicated: true,
+                        shadow: { sizeX: 1.2, sizeY: 1.8, offsetZ: - 0.15, alpha: 0.35 },
+                        mass: 0.5,
+                        sleep: true,
+                        soundName: 'woodHit'
+                    }
+                    
+                    for(let i = 0; i < 10; i++)
+                    {
+                        window.setTimeout(() =>
+                        {
+                            const x = this.car.chassis.object.position.x + (Math.random() - 0.5) * 10
+                            const y = this.car.chassis.object.position.y + (Math.random() - 0.5) * 10
+    
+                            this.objects.add({
+                                ...bowlingBall,
+                                offset: new THREE.Vector3(x, y, 10),
+                                rotation: new THREE.Euler(Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2),
+                                sleep: false
+                            })
+                            // this.eggs.add({
+                            //     offset: new THREE.Vector3(x, y, 10),
+                            //     rotation: new THREE.Euler(Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2),
+                            //     material: this.materials.shades.items.yellow,
+                            //     code: 'MjAyMWVnZ2N2b3V6ZXI=',
+                            //     sleep: false
+                            // })
+                        }, i * 50)
+                    }
+                }
             },
             {
                 action: 'ticket',
-                labelTexture: this.resources.items.informationContactGithubLabelTexture
+                labelTexture: this.resources.items.informationContactGithubLabelTexture,
+                cb: () => {
+
+                    let lemonOption = {
+                        base: this.resources.items.eggBase.scene,
+                        collision: this.resources.items.lemonCollision.scene,
+                        offset: new THREE.Vector3(0, 0, 0),
+                        rotation: new THREE.Euler(Math.PI * 0.5, - Math.PI * 0.3, 0),
+                        duplicated: true,
+                        shadow: { sizeX: 1.2, sizeY: 1.8, offsetZ: - 0.15, alpha: 0.35 },
+                        mass: 0.0000005,
+                        sleep: true,
+                        soundName: 'woodHit'
+                    }
+
+                    for(let i = 0; i < 200; i++)
+                    {
+                        window.setTimeout(() =>
+                        {
+                            const x = this.car.chassis.object.position.x + (Math.random() - 0.5) * 10
+                            const y = this.car.chassis.object.position.y + (Math.random() - 0.5) * 10
+    
+                            this.objects.add({
+                                ...lemonOption,
+                                offset: new THREE.Vector3(x, y, 10),
+                                rotation: new THREE.Euler(Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2),
+                                sleep: false
+                            })
+                        }, i * 50)
+                    }
+                }
             }
         ]
 
@@ -121,7 +217,7 @@ export default class InformationSection
             {
                 // window.open(_option.href, '_blank')
                 console.log("CLICKED")
-                alert(_option.action)
+                _option.cb()
             })
 
             // Texture
